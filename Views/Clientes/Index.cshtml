@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FisioCard.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<!-- Tabela com cabeçalho escuro -->
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Nome)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DataNascimento)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Genero)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Endereco)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Telefone)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.ClienteId">Edit</a> |
+                    <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.ClienteId">Details</a> |
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.ClienteId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FisioCard.Models.Disponibilidade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<!-- Tabela com cabeçalho escuro -->
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().DiaSemana)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().HoraInicio)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().HoraTermino)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Profissional)
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaSemana)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoraTermino)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profissional.Nome) <!-- Supondo que Profissional tem uma propriedade Nome -->
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Edit" asp-route-id="@item.DisponibilidadeId">Edit</a> |
+                    <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.DisponibilidadeId">Details</a> |
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.DisponibilidadeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
